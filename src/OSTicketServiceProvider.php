@@ -1,15 +1,7 @@
 <?php
 
-namespace EpicFailStudio\Core;
+namespace MimoGraphix\OSTicket;
 
-use EpicFailStudio\Core\Console\MakeListerCommand;
-use EpicFailStudio\Core\Console\MakePresenterCommand;
-use EpicFailStudio\Core\Console\MakeReleaseNoteCommand;
-use EpicFailStudio\Core\Console\MakeTransformerCommand;
-use EpicFailStudio\Core\Console\ImportCountriesCommand;
-use EpicFailStudio\Core\Http\Middleware\Admin;
-use EpicFailStudio\Core\Http\Middleware\AdminBarMiddleware;
-use EpicFailStudio\Core\Repositories\CommandOutputRepository;
 use Illuminate\Support\Facades\App;
 use Illuminate\Routing\Router;
 use Illuminate\Support\Facades\Response;
@@ -18,7 +10,7 @@ use Illuminate\Support\ServiceProvider;
 use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Storage;
 
-class CoreServiceProvider extends ServiceProvider
+class OSTicketServiceProvider extends ServiceProvider
 {
     /**
      * Bootstrap the application services.
