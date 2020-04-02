@@ -25,7 +25,7 @@ class OSTicketServiceProvider extends ServiceProvider
             ], 'osticket-config');
         }
 
-        Route::post('/send-ticket', '\MimoGraphix\OSTicket\OSTicketController@sendTicket')->name('osticket.send-ticket');
+        Route::post('/send-ticket', '\MimoGraphix\OSTicket\Http\Controllers\OSTicketController@sendTicket')->name('osticket.send-ticket');
 
         $this->loadViewsFrom(__DIR__ . '/../resources/views', 'osticket');
         $this->loadTranslationsFrom(__DIR__ . '/../resources/lang', 'osticket');
