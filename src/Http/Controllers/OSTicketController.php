@@ -20,7 +20,6 @@ class OSTicketController extends Controller
             "email" => 'required|email',
             "subject" => 'required',
             "message" => 'required',
-            "recaptcha_response" => 'required',
         ]);
 
         if ($v->fails())
