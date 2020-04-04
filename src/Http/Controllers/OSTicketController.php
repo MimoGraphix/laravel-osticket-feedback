@@ -9,6 +9,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Response;
 use Illuminate\Support\Facades\Validator;
+use App\Http\Controllers\Controller;
 
 class OSTicketController extends Controller
 {
