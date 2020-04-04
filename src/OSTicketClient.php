@@ -2,8 +2,8 @@
 
 namespace MimoGraphix\OSTicket;
 
-use EpicFailStudio\OSTicket\Exceptions\OSTicketClientException;
-use EpicFailStudio\OSTicket\Requests\TicketRequest;
+use MimoGraphix\OSTicket\Exceptions\OSTicketClientException;
+use MimoGraphix\OSTicket\Requests\TicketRequest;
 
 /**
  * Class OSTicketClient
