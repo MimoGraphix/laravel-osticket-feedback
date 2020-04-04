@@ -6,4 +6,9 @@ return [
     "default" => [
         "topicId" => "",
     ],
+
+    "recaptcha_v3" => [
+        "site_key" => "",
+        "secret_key" => ""
+    ]
 ];

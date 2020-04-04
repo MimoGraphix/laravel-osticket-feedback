@@ -19,6 +19,7 @@ class OSTicketController extends Controller
             "email" => 'required|email',
             "subject" => 'required',
             "message" => 'required',
+            "recaptcha_response" => 'required',
         ]);
 
         if ($v->fails())
@@ -26,6 +27,18 @@ class OSTicketController extends Controller
             return Response::json([
                                       'success' => false,
                                       'errors' => $v->errors(),
+                                  ], 400);
+        }
+
+        $recaptcha = new \ReCaptcha\ReCaptcha( config( 'osticket.recaptcha_v3.secret_key' ) );
+        $resp = $recaptcha->setExpectedAction('osticket')
+                  ->setScoreThreshold(0.5)
+                  ->verify( $request->get( 'recaptcha_response' ), $request->ip() );
+
+        if ( !$resp->isSuccess()) {
+            return Response::json([
+                                      'success' => false,
+                                      'messages' => "We are sorry but it seems you are a robot..",
                                   ], 400);
         }
 

@@ -29,6 +29,18 @@
                         <textarea name="message" placeholder="{{ __( 'osticket::feedback.message' ) }}" class="form-control form-control-plain">{{ old('message' ) }}</textarea>
                     </div>
 
+                    <input type="hidden" name="recaptcha_response" id="recaptchaResponse">
+
+                    <script src="https://www.google.com/recaptcha/api.js?render={{ config( 'osticket.recaptcha_v3.site_key' ) }}"></script>
+                    <script>
+                    grecaptcha.ready(function() {
+                        grecaptcha.execute('{{ config( 'osticket.recaptcha_v3.site_key' ) }}', {action: 'osticket'}).then(function(token) {
+                            var recaptchaResponse = document.getElementById('recaptchaResponse');
+                            recaptchaResponse.value = token;
+                        });
+                    });
+                    </script>
+
                 </div>
                 <div class="modal-footer">
                     <a class="btn btn-simple" data-dismiss="modal">{{ trans( 'osticket::feedback.modal.close' ) }}</a>
