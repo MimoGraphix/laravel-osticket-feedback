@@ -30,16 +30,19 @@ class OSTicketController extends Controller
                                   ], 400);
         }
 
-        $recaptcha = new \ReCaptcha\ReCaptcha( config( 'osticket.recaptcha_v3.secret_key' ) );
-        $resp = $recaptcha->setExpectedAction('osticket')
-                  ->setScoreThreshold(0.5)
-                  ->verify( $request->get( 'recaptcha_response' ), $request->ip() );
+        if( config( 'osticket.recaptcha_v3.secret_key' ) != "" )
+        {
+            $recaptcha = new \ReCaptcha\ReCaptcha( config( 'osticket.recaptcha_v3.secret_key' ) );
+            $resp = $recaptcha->setExpectedAction('osticket')
+                      ->setScoreThreshold(0.5)
+                      ->verify( $request->get( 'recaptcha_response' ), $request->ip() );
 
-        if ( !$resp->isSuccess()) {
-            return Response::json([
-                                      'success' => false,
-                                      'messages' => "We are sorry but it seems you are a robot..",
-                                  ], 400);
+            if ( !$resp->isSuccess()) {
+                return Response::json([
+                                          'success' => false,
+                                          'messages' => "We are sorry but it seems you are a robot..",
+                                      ], 400);
+            }
         }
 
         $client = new OSTicketClient();
