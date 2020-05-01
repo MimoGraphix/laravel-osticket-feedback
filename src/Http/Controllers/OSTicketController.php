@@ -52,10 +52,9 @@ class OSTicketController extends Controller
                 ->withName( $request->get( 'name' ) )
                 ->withEmail( $request->get( 'email' ) )
                 ->withSubject( $request->get( 'subject' ) )
-                ->withMessage( $request->get( 'message' ) )
-                ->getData();
+                ->withMessage( $request->get( 'message' ) );
 
-            return Response::json( $response, 200 );
+            return Response::json( $response->get(), 200 );
         }
         catch ( OSTicketClientException $e )
         {

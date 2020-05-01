@@ -20,9 +20,14 @@ class OSTicketServiceProvider extends ServiceProvider
     public function boot( )
     {
         if ($this->app->runningInConsole()) {
+
             $this->publishes([
                 __DIR__ . '/../config' => base_path('config'),
             ], 'osticket-config');
+
+            $this->publishes([
+                __DIR__ . '/../resources/views' => base_path('resources/views/vendor/mimographix/laravel-osticket-feedback'),
+            ], 'osticket-views');
         }
 
         Route::post('/send-ticket', '\MimoGraphix\OSTicket\Http\Controllers\OSTicketController@sendTicket')->name('osticket.send-ticket');

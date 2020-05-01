@@ -11,6 +11,11 @@ use MimoGraphix\OSTicket\Exceptions\OSTicketClientException;
  * @author MimoGraphix <mimographix@gmail.com>
  * @copyright EpicFail | Studio
  * @package App\osTicket
+ *
+ * @method TicketRequest withName( $data )
+ * @method TicketRequest withEmail( $data )
+ * @method TicketRequest withSubject( $data )
+ * @method TicketRequest withMessage( $data )
  */
 class TicketRequest extends Request
 {
@@ -27,7 +32,7 @@ class TicketRequest extends Request
             'subject'   =>      '',
             'message'   =>      '',
             'ip'        =>      isset($_SERVER['SERVER_ADDR'])?$_SERVER['SERVER_ADDR']:'127.0.0.1',
-            'topicId'   =>      '' ] )
+            'topicId'   =>      config( 'osticket.default.topicId' ) ] )
         );
     }
 
